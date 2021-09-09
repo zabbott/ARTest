@@ -22,6 +22,5 @@ public class TextReceiver : MonoBehaviour
         //example = mainLight.intensity + " " + mainLight.colorTemperature + " " + mainLight.color;
 
 
-        //mytext.text = example;
     }
 }
