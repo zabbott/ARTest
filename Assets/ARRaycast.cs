@@ -12,6 +12,11 @@ public class ARRaycast : MonoBehaviour
     public GameObject cubeRef;
     public List<GameObject> Planes;
     public ARPlaneManager ARPM;
+	public state ARRaycast ARR; 
+
+	public void Start() { 
+	ARR = this; 
+} 	
 
     private void Update()
     {
@@ -19,10 +24,9 @@ public class ARRaycast : MonoBehaviour
         if(Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            var touchposition = touch.position; 
             if(touch.phase == TouchPhase.Began)
             {
-                Ray ray = ARCamera.ScreenPointToRay(touchposition);
+                Ray ray = ARCamera.ScreenPointToRay(touch.position);
                 RaycastHit hitObject; 
                 if(Physics.Raycast(ray, out hitObject))
                 {
