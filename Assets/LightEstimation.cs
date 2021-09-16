@@ -6,7 +6,6 @@ public class LightEstimation : MonoBehaviour
 {
     public Light MainLight;
     public ARCameraManager ARCM;
-    public TextReceiver TR; 
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +29,6 @@ public class LightEstimation : MonoBehaviour
         if (args.lightEstimation.averageBrightness.HasValue)
         {
             MainLight.intensity = args.lightEstimation.averageBrightness.Value;
-            TR.mytext.text = args.lightEstimation.averageBrightness.Value.ToString();
         }
         if (args.lightEstimation.averageColorTemperature.HasValue)
         {

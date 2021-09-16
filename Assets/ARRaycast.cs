@@ -8,30 +8,33 @@ public class ARRaycast : MonoBehaviour
     // Start is called before the first frame update
     public ARRaycastManager ARCM;
     public Camera ARCamera;
-    public TextReceiver TR;
     public GameObject cubeRef;
     public List<GameObject> Planes;
     public ARPlaneManager ARPM;
-	public state ARRaycast ARR; 
-
+	public static ARRaycast ARR;
+    public bool canMove;
 	public void Start() { 
 	ARR = this; 
 } 	
 
     private void Update()
     {
-       
-        if(Input.touchCount > 0)
+
+        if (canMove)
         {
-            Touch touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Began)
+            if (Input.touchCount > 0)
             {
-                Ray ray = ARCamera.ScreenPointToRay(touch.position);
-                RaycastHit hitObject; 
-                if(Physics.Raycast(ray, out hitObject))
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
                 {
-                    TR.mytext.text = hitObject.point.ToString() ;
-                    cubeRef.transform.position = hitObject.point;
+                    Ray ray = ARCamera.ScreenPointToRay(touch.position);
+                    RaycastHit hitObject;
+                    if (Physics.Raycast(ray, out hitObject))
+                    {
+                        cubeRef.transform.position = hitObject.point;
+                        cubeRef.gameObject.SetActive(true);
+                        TurnOffAllPlanes();
+                    }
                 }
             }
         }

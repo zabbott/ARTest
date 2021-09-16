@@ -13,13 +13,7 @@ public class TextReceiver : MonoBehaviour
 
     private void Update()
     {
-        string example = ""; 
-        //foreach(var item in trackables)
-        //{
-        //    example = example + item.name + "Pos" + item.position;
-        //}
-
-        //example = mainLight.intensity + " " + mainLight.colorTemperature + " " + mainLight.color;
+        
 
 
     }
